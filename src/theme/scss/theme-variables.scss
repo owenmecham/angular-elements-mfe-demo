@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+@import './material-color-map.scss';
+
+@include mat-core();
+
+$adesa-primary: mat-palette($md-adesa);
+$primary: mat-color($adesa-primary);

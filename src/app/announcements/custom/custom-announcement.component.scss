@@ -1,0 +1,27 @@
+@import '../../../theme/scss/variables';
+@import '../../../theme/scss/mixins';
+
+:host {
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.mat-form-field-suffix {
+    margin-right: 12px;
+ } 
+
+ .mat-form-field-infix {
+    margin-left: 12px;
+ }
+
+::ng-deep .amp.mat-form-field.mat-focused {
+    @include ampFormField();
+ }
+
+::ng-deep .portal.mat-form-field.mat-focused {
+    @include portalFormField();  
+}
+

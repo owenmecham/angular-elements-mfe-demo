@@ -1,0 +1,8 @@
+{
+  "adesaAuthorization": {
+    "authority": "https://authorization-api-dev.adesaauctionoperations.com/",
+    "clientId": "announcements-component-harness",
+    "clientScope": "vehicle inventory",
+    "silentRedirectUri": "/callback"
+  }
+}

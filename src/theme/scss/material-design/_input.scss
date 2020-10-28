@@ -1,0 +1,42 @@
+/*
+  Add class to the mat-form-field
+*/
+
+$mat-input-mini-width: 84px;
+$mat-input-small-width: 220px;
+$mat-input-medium-width: 312px;
+$mat-input-large-width: 440px;
+
+$prefix-margin-right: 8px;
+
+.mat-input-mini {
+  width: $mat-input-mini-width;
+  input {
+    width: 100%;
+  }
+}
+
+.mat-input-small {
+  width: $mat-input-small-width;
+  input {
+    width: 100%;
+  }
+}
+
+.mat-input-medium {
+  width: $mat-input-medium-width;
+  input {
+    width: 100%;
+  }
+}
+
+.mat-input-large {
+  width: $mat-input-large-width;
+  input {
+    width: 100%;
+  }
+}
+
+span[matPrefix] {
+  margin-right: $prefix-margin-right;
+}

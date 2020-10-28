@@ -1,0 +1,29 @@
+$divider-color: rgba(0, 0, 0, 0.12);
+$divider-width: 1px;
+
+$panel-width-small: 360px;
+$panel-width-medium: 540px;
+$panel-width-large: 740px;
+
+.mat-dialog-title {
+  border-bottom: $divider-width solid $divider-color;
+  padding-bottom: 16px;
+}
+
+.mat-dialog-actions {
+  padding: 16px 0 24px 0 !important;
+  border-top: $divider-width solid $divider-color;
+  margin-top: 16px;
+}
+
+.mat-dialog-width-small {
+  width: $panel-width-small;
+}
+
+.mat-dialog-width-medium {
+  width: $panel-width-medium;
+}
+
+.mat-dialog-width-large {
+  width: $panel-width-large;
+}

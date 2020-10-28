@@ -1,0 +1,57 @@
+@import '../../../theme/scss/mixins';
+
+mat-dialog-content {
+  max-width: 450px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-dialog-title {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+::ng-deep .amp.mat-button {
+    @include ampButtonStroked();
+ }
+
+::ng-deep .portal.mat-button {
+    @include portalButtonStroked();
+}
+
+::ng-deep .amp.mat-button {
+    @include ampButtonFlat();
+ }
+
+::ng-deep .amp.mat-form-field.mat-focused
+{
+  @include ampArrow();
+}
+
+::ng-deep .amp.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: $amp-primary;
+}
+
+::ng-deep .portal.mat-button {
+    @include portalButtonFlat();
+}
+
+::ng-deep .amp.mat-form-field.mat-focused {
+    @include ampFormField();
+ }
+
+::ng-deep .portal.mat-form-field.mat-focused {
+    @include portalFormField();  
+}
+
+::ng-deep .portal.mat-form-field.mat-focused
+{
+  @include portalArrow();
+}
+
+::ng-deep .portal.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: $portal-primary;
+}

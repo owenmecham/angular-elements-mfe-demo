@@ -1,0 +1,68 @@
+@import '../../../../theme/scss/mixins';
+
+.announcement-subtitle-3 {
+  font-weight: bold;
+  font-size: 14px;
+  height: 24px;
+  padding-top: 16px;
+}
+
+.description-text {
+  font-weight: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: wrap;
+  padding: 4px 0px;
+  font-size: 16px;
+  list-style: none;
+  line-height: 1.75;
+  letter-spacing: 0.5px;
+}
+
+.mat-list {
+  padding-bottom: 8px;
+}
+
+.all-announcements {
+  height: 100%;
+  margin-top: 0px;
+  overflow-y: hidden;
+}
+
+.announcements-list-container {
+  width: 100%;
+}
+
+.announcements-component,
+.announcements-component-body {
+  width: 100%;
+}
+
+.list-item-container {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-horizontal {
+  padding-left: 16px;
+}
+
+.list-horizontal li {
+  display:inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: 0.25px;
+}
+
+.list-horizontal li:before {
+  content: '\00a0\00a0\2022\00a0\00a0';
+  font-size:11px;
+}
+
+.list-horizontal li:first-child:before {
+  content: '';
+}

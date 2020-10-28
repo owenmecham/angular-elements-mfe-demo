@@ -1,0 +1,109 @@
+@import './variables';
+
+@mixin text($size: 12px, $weight: normal, $color: $font-color-dark) {
+  font-family: $font-family;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin ampFormField() {
+    .mat-form-field-label {
+        color: $amp-primary;
+    }
+    .mat-form-field-ripple {
+        background-color: $amp-primary;
+    }
+    .mat-form-field-required-marker {
+        color: $amp-primary;
+    }
+}
+
+@mixin ampChip() {
+    color: #FFF;
+    background-color: $amp-primary;
+    .mat-icon {
+        color: #FFF;
+    }
+    .mat-progress-spinner circle, .mat-spinner circle {
+      stroke: #FFF;
+    }
+}
+
+@mixin ampButtonFlat() {
+    &.mat-flat-button {
+        background-color: $amp-primary;
+    }
+}
+
+@mixin ampButtonStroked() {
+    &.mat-stroked-button {
+        color: $amp-primary;
+    }
+}
+
+@mixin ampDatePickerActive() {
+    color: $amp-primary;
+}
+
+@mixin ampSpinner() {
+  .mat-progress-spinner circle, circle {
+    stroke: $amp-primary;
+  }
+}
+
+@mixin ampArrow() {
+    .mat-select-arrow {
+        color: $amp-primary;
+    }
+}
+
+@mixin portalFormField() {
+    .mat-form-field-label {
+        color: $portal-primary;
+    }
+    .mat-form-field-ripple {
+        background-color: $portal-primary;
+    }
+    .mat-form-field-required-marker {
+        color: $portal-primary;
+    }
+}
+
+@mixin portalChip() {
+    color: #FFF;
+    background-color: $portal-primary;
+    .mat-icon {
+        color: #FFF;
+    }
+    .mat-progress-spinner circle, .mat-spinner circle {
+      stroke: #FFF;
+    }
+}
+
+@mixin portalButtonFlat() {
+    &.mat-flat-button {
+        background-color: $portal-primary;
+    }
+}
+
+@mixin portalButtonStroked() {
+    &.mat-stroked-button {
+        color: $portal-primary;
+    }
+}
+
+@mixin portalDatePickerActive() {
+    color: $portal-primary;
+}
+
+@mixin portalSpinner() {
+  .mat-progress-spinner circle, circle {
+    stroke: $portal-primary;
+  }
+}
+
+@mixin portalArrow() {
+    .mat-select-arrow {
+        color: $portal-primary;
+    }
+}

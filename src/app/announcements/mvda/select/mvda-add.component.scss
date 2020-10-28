@@ -1,0 +1,39 @@
+@import '../../../../theme/scss/mixins';
+
+.mat-form-field {
+    width: 100%;
+}
+
+mat-divider {
+    margin-bottom: 16px;
+}
+
+.mat-dialog-title {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+::ng-deep .amp.mat-button {
+    @include ampButtonFlat();
+ }
+
+::ng-deep .portal.mat-button {
+    @include portalButtonFlat();
+}
+
+::ng-deep .amp.mat-button {
+    @include ampButtonStroked();
+ }
+
+::ng-deep .portal.mat-button {
+    @include portalButtonStroked();
+}
+
+::ng-deep .amp.mat-datepicker-toggle-active {
+    @include ampDatePickerActive();
+}
+
+::ng-deep .portal.mat-datepicker-toggle-active {
+    @include portalDatePickerActive();
+}

@@ -1,0 +1,70 @@
+:host{
+  max-height:inherit;
+  height:100%;
+  padding-bottom: 24px;
+  width: 100%;
+}
+
+.announcement-type {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.announcements-component {
+  max-height:inherit;
+  padding-bottom: 24px;
+  width:100%;
+}
+
+.announcements-component-container {
+  height: 98%;
+  display: block;
+  width: 100%;
+}
+
+.no-active-announcements {
+  padding-top: 145px;
+  align-self: center;
+}
+
+.announcements-body {
+  overflow-y: auto;
+  padding-bottom: 24px;
+}
+
+adesa-announcements-read-only-list {
+  max-height: inherit;
+}
+
+.description-text {
+  font-weight: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: wrap;
+  min-height: 28px !important;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+.announcements-subtitle {
+  display: flex;
+  padding-top: 24px;
+  padding-bottom: 16px;
+  font-weight: 550;
+}
+
+.right-button {
+  margin-left: auto;
+}
+
+.edit-button{
+  color: rgba(0, 0, 0, 0.54);
+  &:hover {
+    color: rgba(0, 0, 0, 0.87);
+    cursor: pointer;
+  }
+}
+
+.lock-button {
+  color: rgba(0, 0, 0, 0.38);
+}

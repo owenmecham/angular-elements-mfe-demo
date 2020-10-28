@@ -1,0 +1,24 @@
+<mat-form-field
+  [ngClass]="themeService.getActiveTheme()"
+  appearance="fill"
+  *transloco="let t"
+>
+  <mat-label>{{ t('custom-announcement-label') }}</mat-label>
+  <input
+    (keydown.enter)="$event.target.blur(); addCustomAnnouncement()"
+    matInput
+    type="text"
+    [(ngModel)]="newCustomAnnouncement"
+    autocomplete="off"
+  />
+  <button
+    [disabled]="!newCustomAnnouncement"
+    mat-button
+    matSuffix
+    mat-icon-button
+    aria-label="t('button-clear-label')"
+    (click)="addCustomAnnouncement()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-form-field>

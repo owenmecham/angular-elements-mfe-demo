@@ -1,0 +1,25 @@
+<ng-container *transloco="let t">
+    <h2 mat-dialog-title>{{t('mvda-delete-title', { desc: t(announcement.description)})}}</h2>
+    <mat-divider></mat-divider>
+    <mat-dialog-content>
+        <p>{{t('mvda-delete-message-1', { desc: t(announcement.description)})}}</p>
+        <p>{{t('mvda-delete-message-2')}}</p>
+        <mat-form-field [ngClass]="themeService.getActiveTheme()" appearance="fill">
+            <mat-label>{{t('reason-label')}}</mat-label>
+            <mat-select [ngClass]="themeService.getActiveTheme()" [(ngModel)]="selectedReason" required [panelClass]="themeService.getActiveTheme()">
+                <mat-option value="ADESA Error">{{t('mvda-delete-reason-adesa-error')}}</mat-option>
+                <mat-option value="Seller's Request Value">{{t('mvda-delete-reason-seller-request-value')}}</mat-option>
+                <mat-option value="Vehicle History Report Error">{{t('mvda-delete-reason-vehicle-history-report-error')}}</mat-option>
+                <mat-option value="Other">{{t('mvda-delete-reason-other')}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field [ngClass]="themeService.getActiveTheme()" appearance="fill" *ngIf="selectedReason === 'Other'">
+            <mat-label>{{t('other-reason-label')}}</mat-label>
+            <input matInput type="text" [(ngModel)]="otherReason" required autocomplete="off"/>
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button [ngClass]="themeService.getActiveTheme()" mat-button mat-stroked-button color="primary" mat-dialog-close>{{t('button-text-cancel')}}</button>
+        <button [ngClass]="getDeleteReason() ? themeService.getActiveTheme() : ''" mat-button mat-flat-button color="primary" [disabled]="!getDeleteReason()" [mat-dialog-close]="getDeleteReason()">{{t('button-text-confirm')}}</button>
+    </mat-dialog-actions>
+</ng-container>

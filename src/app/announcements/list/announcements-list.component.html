@@ -1,0 +1,52 @@
+<ng-container *transloco="let t">
+  <div class="title">{{ t('announcements-list-title') }}</div>
+  <mat-divider></mat-divider>
+
+  <div class="all-announcements">
+    <ng-container
+      *ngTemplateOutlet="chipList;context:{announcements: vehicleAnnouncements, type: 'Vehicle', cancelClickFn: removeVehicleAnnouncement.bind(this)}"
+    >
+    </ng-container>
+
+    <ng-container
+      *ngTemplateOutlet="chipList;context:{announcements: mvdaAnnouncements, type: 'MVDA', cancelClickFn: removeMvdaAnnouncement.bind(this)}"
+    >
+    </ng-container>
+
+    <ng-container
+      *ngTemplateOutlet="chipList;context:{announcements: inventoryAnnouncements, type: 'Inventory', cancelClickFn: removeInventoryAnnouncement.bind(this)}"
+    >
+    </ng-container>
+
+    <ng-container
+      *ngTemplateOutlet="chipList;context:{announcements: customAnnouncements, type: 'Custom', cancelClickFn: removeCustomAnnouncement.bind(this)}"
+    >
+    </ng-container>
+  </div>
+
+  <ng-template #chipList let-announcements="announcements" let-type="type" let-cancelClickFn="cancelClickFn">
+    <div class="announcement-type" *ngIf="announcements?.length">
+      {{ t(type) }}
+    </div>
+    <mat-chip-list class="mat-chip-list-stacked" aria-orientation="vertical">
+      <mat-chip
+        [ngClass]="themeService.getActiveTheme()"
+        [matTooltipClass]="'tool-tip'"
+        *ngFor="let ann of announcements; trackBy: trackFnc"
+        [matTooltip]="ann.longDescription || ann.description"
+        matTooltipPosition="before"
+        fxLayout="row"
+        fxLayoutAlign="space-between"
+      >
+        <div class="chip-text">{{ ann.description }}</div>
+        <div *ngIf="ann.displayStatus != 'deleting'">
+          <mat-icon matChipRemove (click)="cancelClickFn(ann)">cancel
+          </mat-icon>
+        </div>
+        <div *ngIf="ann.displayStatus === 'deleting'">
+            <mat-spinner [diameter]="18"></mat-spinner>
+        </div>
+      </mat-chip>
+    </mat-chip-list>
+  </ng-template>
+</ng-container>

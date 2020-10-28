@@ -1,0 +1,51 @@
+@import '../../../theme/scss/mixins';
+
+:host {
+  height: 93%;
+  width: 100%;
+}
+
+mat-chip {
+  max-width: 200px;
+  .chip-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+  }
+}
+
+.spinner-container {
+  height: 18px;
+  width: 18px;
+}
+
+.mat-chip-list-wrapper {
+  margin: 0px !important;
+}
+
+.all-announcements {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 98%;
+  margin-top: 16px;
+}
+
+.announcement-type {
+  @include text(12px, bold);
+  padding-top: 16px;
+  margin-left: 8px;
+}
+
+.title {
+  @include text(14px, bold);
+  margin-bottom: 12px;
+}
+
+::ng-deep .amp.mat-chip {
+    @include ampChip();
+ }
+
+::ng-deep .portal.mat-chip {
+    @include portalChip();
+}

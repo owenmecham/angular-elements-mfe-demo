@@ -1,0 +1,55 @@
+.mat-list {
+
+  /*
+    mat-subheader and mat-list-item-content have padding left and right of 16px
+    using a mat list inside an element with padding such as a mat-card or mat-dialog-content will
+    result in excessive padding.
+
+    Use the .flush class on the .mat-list class for lists inside elements with padding.
+  */
+  &.flush {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+
+  mat-divider {
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+
+  .mat-subheader {
+    padding-bottom: 0;
+  }
+
+  .mat-line {
+    &.text-wrap {
+      white-space: normal !important;
+    }
+  }
+
+  /*
+    Allowing the mat list item to expand with its content. Default is a set height of 36px;
+  */
+  .mat-list-item {
+    height: initial !important;
+    min-height: 36px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: flex !important;
+
+    .mat-list-item-content {
+      width: 100%;
+    }
+
+    // TODO: replace this with mat-caption class
+    .caption {
+      font-size: 12px;
+      font-weight: 500;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.33;
+      letter-spacing: 0.4px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+}

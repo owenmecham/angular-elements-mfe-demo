@@ -1,0 +1,75 @@
+<div fxLayout="column" fxFlex>
+  <div class="parent" style="margin-bottom: 20px" fxLayout="row" fxFlex="0 0 15%">
+    <div class="left"></div>
+    <div class="center top-container" fxLayout="row">
+      <div fxFlex="100%" fxLayout="column" fxLayoutAlign="space-between">
+        <div fxLayout="row">
+          <div fxLayout="row">
+            <div class="control-container">
+              <span>Auction Site Id:</span>
+              <input type="number" [(ngModel)]="auctionSiteId" />
+              <button type="button" (click)="updateAuctionSiteId()">Update</button>
+            </div>
+            <div class="control-container">
+              <span>Inventory Id:</span>
+              <input type="number" [(ngModel)]="inventoryId" />
+              <button type="button" (click)="updateInventoryId()">Update</button>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <div class="control-container">
+              <span>Theme:</span>
+              <select [(ngModel)]="themeName" (change)="updateTheme($event.target.value)">
+                <option value="amp">Amp</option>
+                <option value="portal">Portal</option>
+              </select>
+            </div>
+            <div class="control-container">
+              <span>Has Edit Permission:</span>
+              <input type="checkbox" [(ngModel)]="hasEditPermission" (change)="updateEditPermission()" />
+              <button *ngIf="!editView" (click)="toggleView()">Edit View</button>
+              <button *ngIf="editView" (click)="toggleView()">Read View</button>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <div class="control-container">
+              <span>Locale:</span>
+              <select [(ngModel)]="localeName" (change)="updateLocale($event.target.value)">
+                <option value="en-us">English</option>
+                <option value="fr-ca">French</option>
+                <option value="es-mx">Spanish</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div class="full-width control-container">
+            <span>External Context Token:</span>
+            <input style="width:55%" type="string" [(ngModel)]="externalContextToken" />
+            <button type="button" (click)="updateToken()">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right"></div>
+  </div>
+
+  <div class="parent" fxLayout="row" style="display: flex; align-items: center; justify-content: center;">
+    <div style="align-self: flex-start;"></div>
+    <div [style.display]="editView? 'none':''" class="element-container"
+      style="min-height: 245px; max-height:493px; width: 360px; padding: 0px;">
+      <adesa-announcements-view inventory-id auth-token auction-site-id has-edit-permission adesa-locale>
+      </adesa-announcements-view>
+      <div style="align-self: flex-end;"></div>
+    </div>
+  </div>
+
+  <div class="parent" fxLayout="row" fxFlex="0 0 80%">
+    <div class="left"></div>
+    <div [style.display]="!editView? 'none':'inherit'" class="center element-container">
+      <adesa-announcements inventory-id auth-token auction-site-id has-edit-permission adesa-locale>
+      </adesa-announcements>
+    </div>
+    <div class="right"></div>
+  </div>
+</div>

@@ -1,0 +1,131 @@
+{
+  "extends": ["rxjs-tslint-rules", "tslint-config-prettier"],
+  "rules": {
+    "arrow-return-shorthand": true,
+    "callable-types": true,
+    "class-name": true,
+    "comment-format": [true, "check-space"],
+    "component-class-suffix": true,
+    "curly": true,
+    "deprecation": true,
+    "directive-class-suffix": true,
+    "eofline": true,
+    "forin": true,
+    "template-i18n": [false, "check-id", "check-text"],
+    "import-blacklist": [true, "rxjs/Rx"],
+    "import-spacing": true,
+    "indent": [true, "spaces"],
+    "interface-over-type-literal": true,
+    "label-position": true,
+    "max-line-length": [true, 140],
+    "member-access": [true, "no-public"],
+    "member-ordering": [
+      true,
+      {
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
+      }
+    ],
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-imports": true,
+    "no-duplicate-super": true,
+    "no-empty": false,
+    "no-empty-interface": true,
+    "no-eval": true,
+    "no-for-in-array": true,
+    "no-inferrable-types": [true, "ignore-params"],
+    "no-input-rename": true,
+    "no-misused-new": true,
+    "no-non-null-assertion": true,
+    "no-output-on-prefix": true,
+    "no-output-rename": true,
+    "no-redundant-jsdoc": true,
+    "no-reference": true,
+    "no-reference-import": true,
+    "no-require-imports": true,
+    "no-shadowed-variable": true,
+    "no-string-literal": false,
+    "no-string-throw": true,
+    "no-switch-case-fall-through": true,
+    "no-trailing-whitespace": true,
+    "no-unnecessary-initializer": true,
+    "no-unused-expression": true,
+    "no-use-before-declare": true,
+    "no-var-keyword": true,
+    "object-literal-sort-keys": false,
+    "one-line": [true, "check-open-brace", "check-catch", "check-else", "check-whitespace"],
+    "ordered-imports": [
+      false,
+      {
+        "grouped-imports": false,
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "case-insensitive"
+      }
+    ],
+    "prefer-const": true,
+    "prettier": true,
+    "quotemark": [true, "single"],
+    "radix": true,
+    "rxjs-ban-observables": {
+      "options": [{
+        "empty": "Use EMPTY",
+        "never": "Use NEVER"
+      }],
+      "severity": "error"
+    },
+    "rxjs-ban-operators": {
+      "options": [{
+        "combineLatest": "Use the static combineLatest",
+        "concat": "Use the static concat",
+        "merge": "Use the static merge",
+        "race": "Use the static race",
+        "zip": "Use the static zip"
+      }],
+      "severity": "error"
+    },
+    "rxjs-finnish": {
+      "options": [{
+        "functions": false,
+        "methods": false,
+        "types": {
+          "^EventEmitter$": true
+        }
+      }],
+      "severity": "error"
+    },
+    "rxjs-no-compat": true,
+    "rxjs-no-ignored-error": true,
+    "rxjs-no-ignored-observable": true,
+    "rxjs-no-internal": true,
+    "rxjs-no-subject-unsubscribe": true,
+    "rxjs-no-subject-value": true,
+    "rxjs-no-unsafe-catch": true,
+    "rxjs-no-unsafe-first": true,
+    "rxjs-no-unsafe-switchmap": true,
+    "rxjs-no-unsafe-takeuntil": true,
+    "semicolon": [true, "always", "strict-bound-class-methods"],
+    "triple-equals": [true, "allow-null-check"],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "unified-signatures": true,
+    "no-host-metadata-property": true,
+    "no-inputs-metadata-property": true,
+    "use-lifecycle-interface": true,
+    "no-outputs-metadata-property": true,
+    "use-pipe-transform-interface": true,
+    "variable-name": false,
+    "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type"]
+  },
+  "rulesDirectory": ["node_modules/codelyzer", "tslint-plugin-prettier", "tslint-consistent-codestyle"]
+}

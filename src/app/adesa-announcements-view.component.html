@@ -1,0 +1,40 @@
+<div class="announcements-component-container" *transloco="let t">
+  <div fxFlex="24px"></div>
+  <div class="announcements-component" fxLayout="column">
+    <div class="announcements-header">
+      <div class="announcements-subtitle">
+        <div>{{ t('announcements-view-title') }}</div>
+        <mat-icon
+          class="right-button edit-button"
+          (click)="toggleEditMode()"
+          *ngIf="hasEditPermission === 'true'"
+          >edit</mat-icon
+        >
+        <mat-icon
+          class="right-button lock-button"
+          *ngIf="hasEditPermission === 'false'"
+          [matTooltipClass]="{ 'tool-tip': true }"
+          [matTooltip]="t('no-permission')"
+          matTooltipPosition="after"
+          >lock</mat-icon
+        >
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+
+    <p class="no-active-announcements" *ngIf="!hasAnnouncements()">
+      {{ t('no-announcements') }}
+    </p>
+
+    <adesa-announcements-read-only-list
+      *ngIf="hasAnnouncements()"
+      class="announcements-body"
+      [inventoryAnnouncements]="inventoryAnnouncements"
+      [vehicleAnnouncements]="vehicleAnnouncements"
+      [customAnnouncements]="customAnnouncements"
+      [mvdaAnnouncements]="mvdaAnnouncements"
+    >
+    </adesa-announcements-read-only-list>
+  </div>
+  <div fxFlex="24px"></div>
+</div>

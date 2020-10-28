@@ -1,0 +1,20 @@
+<ng-container *transloco="let t">
+    <div class="title">MVDA</div>
+    <mat-divider></mat-divider>
+    <mat-action-list>
+        <div class="form-field-container">
+            <mat-form-field [ngClass]="themeService.getActiveTheme()">
+                <input matInput type="text" placeholder="{{ t('Search') }}" [(ngModel)]="searchValue" autocomplete="off"/>
+                <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="t('button-clear-label')"
+                    (click)="searchValue=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+
+        <div class="list-buttons-container">
+            <button mat-list-item *ngFor="let announcement of (announcements | announcementOptionsFilter: searchValue); trackBy: trackFnc"
+                (click)="addAnnouncement(announcement)">{{announcement.description}}</button>
+        </div>
+    </mat-action-list>
+</ng-container>

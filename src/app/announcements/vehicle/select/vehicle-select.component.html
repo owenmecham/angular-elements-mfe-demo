@@ -1,0 +1,42 @@
+<ng-container *transloco="let t">
+  <div class="title">{{ t('Vehicle') }}</div>
+  <mat-divider></mat-divider>
+  <mat-action-list>
+    <div class="form-field-container">
+      <mat-form-field [ngClass]="themeService.getActiveTheme()">
+        <input matInput type="text" placeholder="{{ t('Search') }}" [(ngModel)]="searchValue" autocomplete="off"/>
+        <button
+          mat-button
+          *ngIf="searchValue"
+          matSuffix
+          mat-icon-button
+          aria-label="t('button-clear-label')"
+          (click)="searchValue = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="list-buttons-container">
+      <div
+        *ngFor="let announcement of announcements | announcementOptionsFilter: searchValue; trackBy: trackFnc"
+        class="announcement-option"
+      >
+        <button
+          [disabled]="announcement.isBeingAdded"
+          [ngClass]="announcement.isBeingAdded ? 'disabled-button' : ''"
+          mat-list-item
+          (click)="addAnnouncement(announcement)"
+        >
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="full-width">
+            <div>{{ announcement.description }}</div>
+            <div>
+              <mat-spinner [ngClass]="themeService.getActiveTheme()" *ngIf="announcement.isBeingAdded" [diameter]="18">
+              </mat-spinner>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </mat-action-list>
+</ng-container>

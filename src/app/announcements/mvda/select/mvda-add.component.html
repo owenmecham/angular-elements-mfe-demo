@@ -1,0 +1,61 @@
+<ng-container *transloco="let t">
+    <h2 mat-dialog-title>{{t(data.description)}}</h2>
+    <mat-divider></mat-divider>
+    <mat-dialog-content>
+        <div *ngFor="let customField of data.customFields; let i = index; trackBy: trackFnc">
+            <ng-container *ngIf="customField.controlType == 'textbox'">
+                <ng-container *ngTemplateOutlet="textField;context:{customField: customField}"></ng-container>
+            </ng-container>
+            <ng-container *ngIf="customField.controlType == 'Date'">
+                <ng-container *ngTemplateOutlet="dateField;context:{customField: customField}"></ng-container>
+            </ng-container>
+            <ng-container *ngIf="customField.controlType == 'dropdown'">
+                <ng-container *ngTemplateOutlet="selectField;context:{customField: customField}"></ng-container>
+            </ng-container>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button [ngClass]="themeService.getActiveTheme()" mat-button mat-stroked-button color="primary" mat-dialog-close>{{t('button-text-cancel')}}</button>
+        <button [ngClass]="themeService.getActiveTheme()" mat-button mat-flat-button color="primary" [mat-dialog-close]="mvdaData">{{t('button-text-add')}}</button>
+    </mat-dialog-actions>
+
+    <ng-template #textField let-customField="customField">
+        <mat-form-field [ngClass]="themeService.getActiveTheme()" appearance="fill">
+        <mat-label>{{t('custom-field-' + customField.name)}}</mat-label>
+            <input
+              matInput
+              type="text"
+              [mask]="customField.format | convertFormatToMask"
+              thousandSeparator=","
+              [(ngModel)]="mvdaData[customField.name]"
+              [maxlength]="customField.length"
+              autocomplete="off"
+            />
+        </mat-form-field>
+    </ng-template>
+
+    <ng-template #dateField let-customField="customField">
+        <mat-form-field [ngClass]="themeService.getActiveTheme()" appearance="fill">
+        <mat-label>{{t('custom-field-' + customField.name)}}</mat-label>
+            <input
+              matInput
+              [matDatepicker]="datepicker"
+              [(ngModel)]="mvdaData[customField.name]"
+              autocomplete="off"
+            />
+            <mat-datepicker-toggle [ngClass]="themeService.getActiveTheme()" matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
+    </ng-template>
+
+    <ng-template #selectField let-customField="customField">
+        <mat-form-field [ngClass]="themeService.getActiveTheme()" appearance="fill">
+        <mat-label>{{t('custom-field-' + customField.name)}}</mat-label>
+            <mat-select [(ngModel)]="mvdaData[customField.name]">
+                <mat-option *ngFor="let option of customField.options" [value]="option.key">
+                    {{t('custom-option-' + option.value)}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </ng-template>
+</ng-container>

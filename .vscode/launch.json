@@ -1,0 +1,10 @@
+{
+  "version": "0.2.0",
+  "configurations": [{
+    "type": "chrome",
+    "request": "launch",
+    "name": "Attach to Chrome",
+    "url": "http://localhost:52378",
+    "webRoot": "${workspaceFolder}",
+  }]
+}

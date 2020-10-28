@@ -1,0 +1,213 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "adesa-announcements": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "adesa",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/adesa-announcements",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [{
+                "type": "allScript",
+                "baseline": "1500kb",
+                "maximumError": "5%"
+              }],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "adesa-announcements:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "adesa-announcements:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "adesa-announcements:build"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "codeCoverage": true,
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "scripts": [],
+
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules"
+              ]
+            },
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "app-shell": {
+      "root": "projects/app-shell/",
+      "sourceRoot": "projects/app-shell/src",
+      "projectType": "application",
+      "prefix": "shell",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/app-shell",
+            "index": "projects/app-shell/src/index.html",
+            "main": "projects/app-shell/src/main.ts",
+            "polyfills": "projects/app-shell/src/polyfills.ts",
+            "tsConfig": "projects/app-shell/tsconfig.app.json",
+            "assets": [
+              "projects/app-shell/src/favicon.ico",
+              "projects/app-shell/src/assets",
+              "projects/app-shell/src/settings.json",
+              {
+                "glob": "**/*",
+                "input": "dist/elements/",
+                "output": "/elements/"
+              }
+            ],
+            "styles": [
+              "projects/app-shell/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [{
+                "replace": "projects/app-shell/src/environments/environment.ts",
+                "with": "projects/app-shell/src/environments/environment.prod.ts"
+              }],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "app-shell:build",
+            "port": 52387,
+            "host": "localhost"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app-shell:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "app-shell:build"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "codeCoverage": true,
+            "main": "projects/app-shell/src/test.ts",
+            "polyfills": "projects/app-shell/src/polyfills.ts",
+            "tsConfig": "projects/app-shell/tsconfig.spec.json",
+            "karmaConfig": "projects/app-shell/karma.conf.js",
+            "styles": [
+              "projects/app-shell/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/app-shell/src/favicon.ico",
+              "projects/app-shell/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/app-shell/tsconfig.app.json",
+              "projects/app-shell/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "adesa-announcements"
+}

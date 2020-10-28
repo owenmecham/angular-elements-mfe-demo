@@ -1,0 +1,58 @@
+<div class="announcements-component-container" *transloco="let t">
+  <div class="announcements-component" fxLayout="column" fxLayoutAlign="start start">
+    <div class="announcements-component-body" fxLayout="row" fxLayoutAlign="space-between">
+      <div class="announcements-list-container">
+        <div class="all-announcements">
+          <ng-container
+            *ngTemplateOutlet="
+              announcementList;
+              context: { announcements: vehicleAnnouncements, type: 'Vehicle' }
+            "
+          >
+          </ng-container>
+
+          <ng-container
+            *ngTemplateOutlet="announcementList; context: { announcements: mvdaAnnouncements, type: 'MVDA' }"
+          >
+          </ng-container>
+
+          <ng-container
+            *ngTemplateOutlet="
+              announcementList;
+              context: { announcements: inventoryAnnouncements, type: 'Inventory' }
+            "
+          >
+          </ng-container>
+
+          <ng-container
+            *ngTemplateOutlet="
+              announcementList;
+              context: { announcements: customAnnouncements, type: 'Custom' }
+            "
+          >
+          </ng-container>
+        </div>
+
+        <ng-template #announcementList let-announcements="announcements" let-type="type">
+          <div class="announcement-subtitle-3" *ngIf="announcements?.length">{{ t(type) }}</div>
+          <mat-list *ngIf="announcements?.length" aria-orientation="vertical">
+            <ul class="list-item-container">
+              <li
+                class="list-item description-text"
+                *ngFor="let ann of announcements"
+              >
+                {{ ann.description }}
+                <ul *ngIf="type === 'MVDA'" class="list-horizontal">
+                  <li *ngFor="let value of ann.fieldValues">{{ value }}</li>
+                </ul>
+              </li>
+            </ul>
+          </mat-list>
+          <mat-divider *ngIf="announcements?.length"></mat-divider>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex="24px"></div>
+</div>

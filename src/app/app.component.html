@@ -1,0 +1,50 @@
+<div fxLayout="row" fxLayoutAlign="start start" class="announcements-component-container" *transloco="let t">
+  <div *ngIf="_siteThemeName!='amp'" fxFlex="24px"></div>
+
+  <div class="announcements-component" fxLayout="column" fxLayoutAlign="start start">
+    <div class="announcements-header">
+      <div class="announcements-subtitle">
+        {{ t('announcements-title') }}
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+    <div class="announcements-component-body" fxLayout="row" fxLayoutAlign="start start">
+      <div fxLayout="row" class="full-width-height">
+        <div fxFlex="34%" class="full-width-height">
+          <div class="announcements-list-container" fxFlex="100%" fxLayout="column" fxLayoutAlign="start start">
+            <adesa-announcements-list></adesa-announcements-list>
+          </div>
+        </div>
+        <div fxFlex="2%"></div>
+        <div fxFlex="64%" fxLayout="column" fxLayoutAlign="start start" class="full-width-height">
+          <div fxLayout="row" fxLayoutAlign="start start" class="full-width-height">
+            <div fxFlex="48%" class="full-width-height">
+              <div *ngIf="!canadianSite" class="announcements-subtitle-2">
+                <div class="vehicle-container" fxFlex="100%" fxLayout="column" fxLayoutAlign="start start">
+                  <adesa-vehicle-select></adesa-vehicle-select>
+                </div>
+              </div>
+              <div *ngIf="canadianSite" class="announcements-subtitle-2">
+                <div class="mvda-container" fxFlex="100%" fxLayout="column" fxLayoutAlign="start start">
+                  <adesa-mvda-select></adesa-mvda-select>
+                </div>
+              </div>
+            </div>
+            <div fxFlex="4%"></div>
+            <div fxFlex="48%" class="full-width-height">
+              <div class="announcements-subtitle-2">
+                <div class="inventory-container" fxFlex="100%" fxLayout="column" fxLayoutAlign="start start">
+                  <adesa-inventory-select></adesa-inventory-select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start end" class="custom-announcement">
+            <adesa-custom-announcement></adesa-custom-announcement>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="_siteThemeName!='amp'" fxFlex="24px"></div>
+</div>

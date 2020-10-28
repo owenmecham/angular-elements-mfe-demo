@@ -1,0 +1,119 @@
+@import '../theme/scss/mixins';
+@import '../theme/scss/variables';
+
+:host {
+  height: 100%;
+  width: 100%;
+  min-height: 0px;
+}
+
+.announcements-component {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.announcements-header {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.announcements-component-container {
+  height: 100%;
+  width: 100%;
+  min-height: 0px;
+}
+
+.announcements-component-body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.custom-announcement {
+  width: 100%;
+}
+
+.custom-announcement-container {
+  width: 100%;
+
+  div {
+    width: 100%;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-width-height {
+  height: 100%;
+  min-height: 0px;
+  width: 100%;
+}
+
+.mat-form-field-infix {
+  margin-left: 12px;
+}
+
+::ng-deep .mat-list-base .mat-list-item {
+  min-height: 36px;
+  height: auto !important;
+}
+
+.divider {
+  margin: 12px;
+  width: 100%;
+}
+
+.button-container {
+  height: 72px;
+  width: 100%;
+}
+
+.announcements-subtitle {
+  @include text(16px, bold);
+  margin: 12px 0;
+  display: flex;
+
+  button {
+    margin-left: auto;
+  }
+}
+
+.announcements-subtitle-2 {
+  height: 100%;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.announcements-list-container {
+  width: 100%;
+  height: 98%;
+
+  adesa-announcements-read-only-list {
+    width: 100%;
+  }
+}
+
+::ng-deep .tool-tip {
+  @include text(12px, bold);
+
+  background-color: rgba(0, 0, 0, 0.87);
+  color: #FFF;
+  white-space: pre-line;
+}
+
+::ng-deep .list-buttons-container::-webkit-scrollbar {
+  width: 10px;
+  background-color: $adesa-spinner-gray;
+}
+
+::ng-deep .list-buttons-container::-webkit-scrollbar-thumb {
+  background-color: $adesa-warm-gray;
+}
+
+::ng-deep .list-buttons-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: $adesa-spinner-gray;
+}

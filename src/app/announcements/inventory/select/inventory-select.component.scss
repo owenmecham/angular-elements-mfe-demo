@@ -1,0 +1,67 @@
+@import '../../../../theme/scss/mixins';
+
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.list-buttons-container {
+  overflow-y: auto;
+  flex-grow: 1;
+  height: 96%;
+}
+
+::ng-deep .mat-list-item-content {
+  padding: 4px 8px !important;
+}
+
+.mat-list-base .mat-list-item {
+    @include text(14px, normal);
+    padding: 0px;
+}
+
+mat-action-list {
+  height: 80%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.form-field-container {
+  width: 97%;
+}
+
+.title {
+  @include text(14px, bold);
+  margin-bottom: 12px;
+}
+
+::ng-deep .amp.mat-form-field.mat-focused {
+    @include ampFormField();
+ }
+
+::ng-deep .portal.mat-form-field.mat-focused {
+    @include portalFormField();
+}
+
+::ng-deep .amp.mat-spinner {
+  @include ampSpinner();
+}
+
+::ng-deep .portal.mat-spinner {
+  @include portalSpinner();
+}
+
+mat-spinner {
+  margin-left: 10px;
+}
+
+.disabled-button {
+  color: lightgrey;
+  cursor: default;
+}
+
+.full-width {
+  width:100%;
+}
