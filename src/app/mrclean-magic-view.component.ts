@@ -17,8 +17,8 @@ import { ExternalContextService } from './shared/external-context.service';
 
 @Component({
   selector: 'mrclean-magic-view',
-  templateUrl: './adesa-announcements-view.component.html',
-  styleUrls: ['./adesa-announcements-view.component.scss'],
+  templateUrl: './mrclean-magic-view.component.html',
+  styleUrls: ['./mrclean-magic-view.component.scss'],
 })
 export class AdesaAnnouncementsViewComponent implements OnInit, OnDestroy {
   private _auctionSiteId: number;

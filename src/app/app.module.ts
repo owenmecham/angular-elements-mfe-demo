@@ -14,7 +14,6 @@ import { TranslocoLocaleModule } from '@ngneat/transloco-locale';
 import { NgxMaskModule } from 'ngx-mask';
 import { environment } from '../environments/environment';
 import { ThemeModule } from '../theme/theme.module';
-import { AdesaAnnouncementsViewComponent } from './adesa-announcements-view.component';
 import { AnnouncementOptionsFilterPipe } from './announcements/announcement-options-filter.pipe';
 import { CustomAnnouncementComponent } from './announcements/custom/custom-announcement.component';
 import { CustomAnnouncementService } from './announcements/custom/custom-announcement.service';
@@ -32,6 +31,7 @@ import { VehicleAnnouncementService } from './announcements/vehicle/vehicle-anno
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 import { AppOverlayContainer } from './custom-overlay-container';
+import { AdesaAnnouncementsViewComponent } from './mrclean-magic-view.component';
 import { ErrorHandlerService } from './shared/error-handler.service';
 import { SettingsService } from './shared/settings.service';
 import { translocoLoader } from './transloco.loader';
