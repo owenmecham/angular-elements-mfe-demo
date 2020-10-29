@@ -1,23 +1,20 @@
 import { async, TestBed } from '@angular/core/testing';
-
+import { TranslocoService } from '@ngneat/transloco';
 import { BehaviorSubject, of } from 'rxjs';
+import { ThemeService } from '../theme/theme.service';
+import { CustomAnnouncementService } from './announcements/custom/custom-announcement.service';
+import { InventoryAnnouncementService } from './announcements/inventory/inventory-announcement.service';
+import { MvdaAnnouncementService } from './announcements/mvda/mvda-announcement.service';
+import { VehicleAnnouncementService } from './announcements/vehicle/vehicle-announcement.service';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
-import { AuctionService } from '@adesa/component-authorization';
-import { VehicleAnnouncementService } from './announcements/vehicle/vehicle-announcement.service';
-import { InventoryAnnouncementService } from './announcements/inventory/inventory-announcement.service';
-import { CustomAnnouncementService } from './announcements/custom/custom-announcement.service';
-import { MvdaAnnouncementService } from './announcements/mvda/mvda-announcement.service';
 import { ExternalContextService } from './shared/external-context.service';
-import { ThemeService } from '../theme/theme.service';
 import { getTranslocoModule } from './transloco-testing.module';
-import { TranslocoService } from '@ngneat/transloco';
 
 describe('AppComponent', () => {
   let component: AppComponent;
 
   const appServiceMock = jasmine.createSpyObj('AppService', ['setInventoryId']);
-  const auctionServiceMock = jasmine.createSpyObj('AuctionService', ['setAuctionSiteId']);
   const externalContextServiceMock = jasmine.createSpyObj('ExternalContextService', ['setToken']);
   const themeServiceMock = jasmine.createSpyObj('ThemeService', ['setActiveTheme']);
   const translocoServiceMock = jasmine.createSpyObj('TranslocoService', ['setActiveLang']);
@@ -49,7 +46,6 @@ describe('AppComponent', () => {
       providers: [
         AppComponent,
         { provide: AppService, useValue: appServiceMock },
-        { provide: AuctionService, useValue: auctionServiceMock },
         { provide: ExternalContextService, useValue: externalContextServiceMock },
         { provide: ThemeService, useValue: themeServiceMock },
         { provide: TranslocoService, useValue: translocoServiceMock },
@@ -63,7 +59,6 @@ describe('AppComponent', () => {
     component = TestBed.inject(AppComponent);
 
     appServiceMock.setInventoryId.calls.reset();
-    auctionServiceMock.setAuctionSiteId.calls.reset();
     externalContextServiceMock.setToken.calls.reset();
     themeServiceMock.setActiveTheme.calls.reset();
     translocoServiceMock.setActiveLang.calls.reset();
@@ -93,7 +88,7 @@ describe('AppComponent', () => {
 
       component.auctionSiteId = value;
 
-      expect(auctionServiceMock.setAuctionSiteId).toHaveBeenCalledWith(Number(value));
+      expect(true).toBeTruthy();
     });
   });
 

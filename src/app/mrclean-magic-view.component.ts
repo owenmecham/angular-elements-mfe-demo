@@ -1,4 +1,3 @@
-import { AuctionService } from '@adesa/component-authorization';
 import { Component, Input, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { Subject } from 'rxjs';
@@ -70,7 +69,6 @@ export class MrcleanMagicViewComponent implements OnInit, OnDestroy {
     private mvdaAnnouncementService: MvdaAnnouncementService,
     private translocoService: TranslocoService,
     private externalContextService: ExternalContextService,
-    private _auctionService: AuctionService,
     private zone: NgZone,
   ) {}
 
@@ -102,7 +100,7 @@ export class MrcleanMagicViewComponent implements OnInit, OnDestroy {
   }
 
   private onAuctionChanged() {
-    this._auctionService.setAuctionSiteId(this._auctionSiteId);
+    localStorage.setItem('auctionSiteId', this._auctionSiteId.toString());
     this.canadianSite = auctionSites[this._auctionSiteId] === Country.Canada;
   }
 

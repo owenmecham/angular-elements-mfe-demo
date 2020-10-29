@@ -20,8 +20,6 @@
   },
   "private": true,
   "dependencies": {
-    "@adesa/authorization": "^2.0.0",
-    "@adesa/component-authorization": "^1.7.0",
     "@angular/animations": "^9.1.12",
     "@angular/cdk": "^9.2.4",
     "@angular/common": "^9.1.12",

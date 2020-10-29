@@ -1,4 +1,3 @@
-import { AuctionService } from '@adesa/component-authorization';
 import { async, TestBed } from '@angular/core/testing';
 import { TranslocoService } from '@ngneat/transloco';
 import { of } from 'rxjs';
@@ -45,7 +44,6 @@ describe('MrcleanMagicViewComponent', () => {
       providers: [
         MrcleanMagicViewComponent,
         { provide: AppService, useValue: appServiceMock },
-        { provide: AuctionService, useValue: auctionServiceMock },
         { provide: ExternalContextService, useValue: externalContextServiceMock },
         { provide: TranslocoService, useValue: translocoServiceMock },
         { provide: VehicleAnnouncementService, useValue: vehicleAnnouncementServiceMock },

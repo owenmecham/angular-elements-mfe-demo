@@ -1,7 +1,6 @@
-import { AdesaAuthorizationConfig, AuthorizationInterceptor } from '@adesa/component-authorization';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { CurrencyPipe } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -69,15 +68,6 @@ import { translocoLoader } from './transloco.loader';
   providers: [
     { provide: OverlayContainer, useClass: AppOverlayContainer },
     { provide: ErrorHandler, useClass: ErrorHandlerService },
-    {
-      provide: AdesaAuthorizationConfig,
-      useFactory: () => <AdesaAuthorizationConfig>{ domainsToIgnore: [environment.cdnEndpoint] },
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthorizationInterceptor,
-      multi: true,
-    },
     SettingsService,
     AppService,
     VehicleAnnouncementService,

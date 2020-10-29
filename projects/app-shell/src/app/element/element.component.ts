@@ -1,6 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { AnnouncementEvent } from './announcement-event';
-import { AuctionStorageService, Site } from '@adesa/authorization';
 
 @Component({
   selector: 'shell-element',
@@ -18,7 +17,7 @@ export class ElementComponent implements AfterViewInit {
   editView = false;
   localeName = 'en-us';
 
-  constructor(private _auctionStorageService: AuctionStorageService) {
+  constructor() {
     this.loadScript();
     this.auctionSiteId = localStorage.getItem('auctionSiteId');
   }
@@ -121,7 +120,6 @@ export class ElementComponent implements AfterViewInit {
     if (this.announcementsViewElement) {
       this.announcementsViewElement.setAttribute('auction-site-id', this.auctionSiteId);
     }
-    this._auctionStorageService.setAuction(<Site>{ coId: Number(this.auctionSiteId) });
     localStorage.setItem('auctionSiteId', this.auctionSiteId);
   }
 

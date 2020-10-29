@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { combineLatest, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -8,9 +8,8 @@ import { InventoryAnnouncementService } from './announcements/inventory/inventor
 import { MvdaAnnouncementService } from './announcements/mvda/mvda-announcement.service';
 import { VehicleAnnouncementService } from './announcements/vehicle/vehicle-announcement.service';
 import { AppService } from './app.service';
-import { ExternalContextService } from './shared/external-context.service';
 import { auctionSites, Country } from './shared/auctionSites';
-import { AuctionService } from '@adesa/component-authorization';
+import { ExternalContextService } from './shared/external-context.service';
 
 @Component({
   selector: 'mrclean-magic',
@@ -62,7 +61,6 @@ export class AppComponent implements OnInit, OnDestroy {
     private mvdaAnnouncementService: MvdaAnnouncementService,
     private translocoService: TranslocoService,
     private externalContextService: ExternalContextService,
-    private _auctionService: AuctionService,
   ) {}
 
   private setViewMode() {
@@ -119,7 +117,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private onAuctionChanged() {
-    this._auctionService.setAuctionSiteId(this._auctionSiteId);
+    localStorage.setItem('auctionSiteId', this._auctionSiteId.toString());
     this.canadianSite = auctionSites[this._auctionSiteId] === Country.Canada;
   }
 
