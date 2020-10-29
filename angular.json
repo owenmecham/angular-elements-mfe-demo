@@ -32,15 +32,19 @@
           },
           "configurations": {
             "production": {
-              "budgets": [{
-                "type": "allScript",
-                "baseline": "1500kb",
-                "maximumError": "5%"
-              }],
-              "fileReplacements": [{
-                "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.prod.ts"
-              }],
+              "budgets": [
+                {
+                  "type": "allScript",
+                  "baseline": "1500kb",
+                  "maximumError": "5%"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -79,7 +83,6 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "scripts": [],
-
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules"
@@ -141,10 +144,12 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "projects/app-shell/src/environments/environment.ts",
-                "with": "projects/app-shell/src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "projects/app-shell/src/environments/environment.ts",
+                  "with": "projects/app-shell/src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -209,5 +214,8 @@
       }
     }
   },
-  "defaultProject": "adesa-announcements"
+  "defaultProject": "adesa-announcements",
+  "cli": {
+    "analytics": false
+  }
 }
