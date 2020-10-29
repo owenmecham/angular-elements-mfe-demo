@@ -20,7 +20,7 @@ import { ExternalContextService } from './shared/external-context.service';
   templateUrl: './mrclean-magic-view.component.html',
   styleUrls: ['./mrclean-magic-view.component.scss'],
 })
-export class AdesaAnnouncementsViewComponent implements OnInit, OnDestroy {
+export class MrcleanMagicViewComponent implements OnInit, OnDestroy {
   private _auctionSiteId: number;
   private _inventoryId: number;
   private _adesaLocale = 'en-us';

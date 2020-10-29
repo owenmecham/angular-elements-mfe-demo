@@ -31,7 +31,7 @@ import { VehicleAnnouncementService } from './announcements/vehicle/vehicle-anno
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 import { AppOverlayContainer } from './custom-overlay-container';
-import { AdesaAnnouncementsViewComponent } from './mrclean-magic-view.component';
+import { MrcleanMagicViewComponent } from './mrclean-magic-view.component';
 import { ErrorHandlerService } from './shared/error-handler.service';
 import { SettingsService } from './shared/settings.service';
 import { translocoLoader } from './transloco.loader';
@@ -49,7 +49,7 @@ import { translocoLoader } from './transloco.loader';
     MvdaDeleteComponent,
     ConvertFormatToMaskPipe,
     ReadOnlyListComponent,
-    AdesaAnnouncementsViewComponent,
+    MrcleanMagicViewComponent,
   ],
   imports: [
     HttpClientModule,
@@ -101,7 +101,7 @@ import { translocoLoader } from './transloco.loader';
     translocoLoader,
     CurrencyPipe,
   ],
-  entryComponents: [AppComponent, MvdaAddComponent, MvdaDeleteComponent, AdesaAnnouncementsViewComponent],
+  entryComponents: [AppComponent, MvdaAddComponent, MvdaDeleteComponent, MrcleanMagicViewComponent],
 })
 export class AppModule {
   constructor(private injector: Injector) {}
@@ -110,7 +110,7 @@ export class AppModule {
     const appComponent = createCustomElement(AppComponent, {
       injector: this.injector,
     });
-    const appViewComponent = createCustomElement(AdesaAnnouncementsViewComponent, {
+    const appViewComponent = createCustomElement(MrcleanMagicViewComponent, {
       injector: this.injector,
     });
 

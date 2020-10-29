@@ -7,12 +7,12 @@ import { InventoryAnnouncementService } from './announcements/inventory/inventor
 import { MvdaAnnouncementService } from './announcements/mvda/mvda-announcement.service';
 import { VehicleAnnouncementService } from './announcements/vehicle/vehicle-announcement.service';
 import { AppService } from './app.service';
-import { AdesaAnnouncementsViewComponent } from './mrclean-magic-view.component';
+import { MrcleanMagicViewComponent } from './mrclean-magic-view.component';
 import { ExternalContextService } from './shared/external-context.service';
 import { getTranslocoModule } from './transloco-testing.module';
 
-describe('AdesaAnnouncementsViewComponent', () => {
-  let component: AdesaAnnouncementsViewComponent;
+describe('MrcleanMagicViewComponent', () => {
+  let component: MrcleanMagicViewComponent;
   const appServiceMock = jasmine.createSpyObj('AppService', ['setInventoryId']);
   const auctionServiceMock = jasmine.createSpyObj('AuctionService', ['setAuctionSiteId']);
   const externalContextServiceMock = jasmine.createSpyObj('ExternalContextService', ['setToken']);
@@ -43,7 +43,7 @@ describe('AdesaAnnouncementsViewComponent', () => {
     TestBed.configureTestingModule({
       imports: [getTranslocoModule()],
       providers: [
-        AdesaAnnouncementsViewComponent,
+        MrcleanMagicViewComponent,
         { provide: AppService, useValue: appServiceMock },
         { provide: AuctionService, useValue: auctionServiceMock },
         { provide: ExternalContextService, useValue: externalContextServiceMock },
@@ -55,7 +55,7 @@ describe('AdesaAnnouncementsViewComponent', () => {
       ],
     }).compileComponents();
 
-    component = TestBed.inject(AdesaAnnouncementsViewComponent);
+    component = TestBed.inject(MrcleanMagicViewComponent);
 
     appServiceMock.setInventoryId.calls.reset();
     auctionServiceMock.setAuctionSiteId.calls.reset();
