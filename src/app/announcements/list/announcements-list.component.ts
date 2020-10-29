@@ -15,7 +15,7 @@ import { ThemeService } from '../../../theme/theme.service';
 import { MvdaDeleteComponent } from '../mvda/mvda-delete.component';
 
 @Component({
-  selector: 'adesa-announcements-list',
+  selector: 'mrclean-magic-list',
   templateUrl: './announcements-list.component.html',
   styleUrls: ['./announcements-list.component.scss'],
 })

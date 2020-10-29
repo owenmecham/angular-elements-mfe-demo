@@ -42,8 +42,8 @@ export class ElementComponent implements AfterViewInit {
   }
 
   private getViews() {
-    this.announcementsElement = document.getElementsByTagName('adesa-announcements')[0];
-    this.announcementsViewElement = document.getElementsByTagName('adesa-announcements-view')[0];
+    this.announcementsElement = document.getElementsByTagName('mrclean-magic')[0];
+    this.announcementsViewElement = document.getElementsByTagName('mrclean-magic-view')[0];
   }
 
   registerEventListeners() {
@@ -141,7 +141,7 @@ export class ElementComponent implements AfterViewInit {
   }
 
   loadScript() {
-    const scriptName = 'adesa-announcements';
+    const scriptName = 'mrclean-magic';
 
     let isFound = false;
     const scripts = document.getElementsByTagName('script');

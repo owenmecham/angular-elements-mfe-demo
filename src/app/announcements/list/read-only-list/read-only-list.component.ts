@@ -5,7 +5,7 @@ import { CustomAnnouncement } from '../../custom/custom-announcement';
 import { MvdaAnnouncement } from '../../mvda/mvda-announcement';
 
 @Component({
-  selector: 'adesa-announcements-read-only-list',
+  selector: 'mrclean-magic-read-only-list',
   templateUrl: './read-only-list.component.html',
   styleUrls: ['../announcements-list.component.scss', './read-only-list.component.scss'],
 })

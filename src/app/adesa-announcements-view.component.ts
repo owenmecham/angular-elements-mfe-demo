@@ -1,6 +1,7 @@
 import { AuctionService } from '@adesa/component-authorization';
-import { NgZone, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CustomAnnouncement } from './announcements/custom/custom-announcement';
 import { CustomAnnouncementService } from './announcements/custom/custom-announcement.service';
@@ -13,10 +14,9 @@ import { VehicleAnnouncementService } from './announcements/vehicle/vehicle-anno
 import { AppService } from './app.service';
 import { auctionSites, Country } from './shared/auctionSites';
 import { ExternalContextService } from './shared/external-context.service';
-import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'adesa-announcements-view',
+  selector: 'mrclean-magic-view',
   templateUrl: './adesa-announcements-view.component.html',
   styleUrls: ['./adesa-announcements-view.component.scss'],
 })

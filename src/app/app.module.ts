@@ -1,4 +1,6 @@
-import { AuthorizationInterceptor, AdesaAuthorizationConfig } from '@adesa/component-authorization';
+import { AdesaAuthorizationConfig, AuthorizationInterceptor } from '@adesa/component-authorization';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { CurrencyPipe } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorHandler, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
@@ -29,12 +31,10 @@ import { VehicleSelectComponent } from './announcements/vehicle/select/vehicle-s
 import { VehicleAnnouncementService } from './announcements/vehicle/vehicle-announcement.service';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
+import { AppOverlayContainer } from './custom-overlay-container';
 import { ErrorHandlerService } from './shared/error-handler.service';
 import { SettingsService } from './shared/settings.service';
 import { translocoLoader } from './transloco.loader';
-import { OverlayContainer } from '@angular/cdk/overlay';
-import { AppOverlayContainer } from './custom-overlay-container';
-import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -114,7 +114,7 @@ export class AppModule {
       injector: this.injector,
     });
 
-    customElements.define('adesa-announcements', appComponent);
-    customElements.define('adesa-announcements-view', appViewComponent);
+    customElements.define('mrclean-magic', appComponent);
+    customElements.define('mrclean-magic-view', appViewComponent);
   }
 }

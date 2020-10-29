@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "adesa-announcements": {
+    "mrclean-magic": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
-            "outputPath": "dist/adesa-announcements",
+            "outputPath": "dist/mrclean-magic",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -60,18 +60,18 @@
         "serve": {
           "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "adesa-announcements:build"
+            "browserTarget": "mrclean-magic:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "adesa-announcements:build:production"
+              "browserTarget": "mrclean-magic:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "adesa-announcements:build"
+            "browserTarget": "mrclean-magic:build"
           }
         },
         "test": {
@@ -214,7 +214,7 @@
       }
     }
   },
-  "defaultProject": "adesa-announcements",
+  "defaultProject": "mrclean-magic",
   "cli": {
     "analytics": false
   }

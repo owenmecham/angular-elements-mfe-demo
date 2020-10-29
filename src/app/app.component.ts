@@ -13,7 +13,7 @@ import { auctionSites, Country } from './shared/auctionSites';
 import { AuctionService } from '@adesa/component-authorization';
 
 @Component({
-  selector: 'adesa-announcements',
+  selector: 'mrclean-magic',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

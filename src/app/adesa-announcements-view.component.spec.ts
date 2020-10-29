@@ -1,16 +1,15 @@
+import { AuctionService } from '@adesa/component-authorization';
 import { async, TestBed } from '@angular/core/testing';
-
+import { TranslocoService } from '@ngneat/transloco';
 import { of } from 'rxjs';
 import { AdesaAnnouncementsViewComponent } from './adesa-announcements-view.component';
-import { AppService } from './app.service';
-import { AuctionService } from '@adesa/component-authorization';
-import { VehicleAnnouncementService } from './announcements/vehicle/vehicle-announcement.service';
-import { InventoryAnnouncementService } from './announcements/inventory/inventory-announcement.service';
 import { CustomAnnouncementService } from './announcements/custom/custom-announcement.service';
+import { InventoryAnnouncementService } from './announcements/inventory/inventory-announcement.service';
 import { MvdaAnnouncementService } from './announcements/mvda/mvda-announcement.service';
+import { VehicleAnnouncementService } from './announcements/vehicle/vehicle-announcement.service';
+import { AppService } from './app.service';
 import { ExternalContextService } from './shared/external-context.service';
 import { getTranslocoModule } from './transloco-testing.module';
-import { TranslocoService } from '@ngneat/transloco';
 
 describe('AdesaAnnouncementsViewComponent', () => {
   let component: AdesaAnnouncementsViewComponent;

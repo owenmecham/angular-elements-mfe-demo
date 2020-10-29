@@ -2,52 +2,49 @@
 
 This project exports two angular elements for use in other adesa applications:
 
-- adesa-announcements
+- mrclean-magic
+
   - Component that allows a user to add announcements to a auction-site/inventory.
   - Inputs
     - auction-site-id - The id of the auction site
     - inventory-id - The id of the inventory to add announcements to
-    - has-edit-permission - Determines if the edit button is enabled for adesa-announcements-view component
-    - site-theme-name - Determines primary color for the component.  Options are 'amp' or 'portal'
+    - has-edit-permission - Determines if the edit button is enabled for mrclean-magic-view component
+    - site-theme-name - Determines primary color for the component. Options are 'amp' or 'portal'
     - adesa-locale - The locale to use for localization
     - external-context-token - TBD
 
-- adesa-announcements-view
+- mrclean-magic-view
   - Component that allows a user to view announcements for a auction-site/inventory
   - Inputs
     - auction-site-id - The id of the auction site
     - inventory-id - The id of the inventory to add announcements to
-    - has-edit-permission - Determines if the edit button is enabled for adesa-announcements-view component
+    - has-edit-permission - Determines if the edit button is enabled for mrclean-magic-view component
     - adesa-locale - The locale to use for localization
     - external-context-token - TBD
 
 ## Material Design Icons
-  - This project uses Material Design Icons.  Please include the following CDN link in your project:
-    - `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
+- This project uses Material Design Icons. Please include the following CDN link in your project:
+  - `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 ## Content CDN Urls
-  - Dev
-    - `https://www-announcements-dev.adesaauctionoperations.com/elements/adesa-announcements.js`
-  - Test
-    - `https://www-announcements-test.adesaauctionoperations.com/elements/adesa-announcements.js`
-  - UAT
-    - `https://www-announcements-uat.adesaauctionoperations.com/elements/adesa-announcements.js`
 
-  - Including in your project sample:
-    - `<script defer type="module" src="https://www-announcements-dev.adesaauctionoperations.com/elements/adesa-announcements.js"></script>`
-    - If including in an angular app, make sure you include the CUSTOM_ELEMENTS_SCHEMA in the module you are consuming the component.
-      `
-        import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-        @NgModule({
-          ...
-          schemas: [CUSTOM_ELEMENTS_SCHEMA]
-          ...
-        })
-      `
+- Dev
+  - `https://www-announcements-dev.adesaauctionoperations.com/elements/mrclean-magic.js`
+- Test
+  - `https://www-announcements-test.adesaauctionoperations.com/elements/mrclean-magic.js`
+- UAT
+
+  - `https://www-announcements-uat.adesaauctionoperations.com/elements/mrclean-magic.js`
+
+- Including in your project sample:
+  - `<script defer type="module" src="https://www-announcements-dev.adesaauctionoperations.com/elements/mrclean-magic.js"></script>`
+  - If including in an angular app, make sure you include the CUSTOM_ELEMENTS_SCHEMA in the module you are consuming the component.
+    `import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'; @NgModule({ ... schemas: [CUSTOM_ELEMENTS_SCHEMA] ... })`
 
 ## Initializing Git submodule
 
-This project uses a Git submodule (adesa-announcements-i18n-resources) for PO Editor integration. To initialize the submodule, navigate to the submodule directory (currently src/assets/i18n) and run the following commands:
+This project uses a Git submodule (mrclean-magic-i18n-resources) for PO Editor integration. To initialize the submodule, navigate to the submodule directory (currently src/assets/i18n) and run the following commands:
 git submodule init
 git submodule update --remote
 git checkout localization
