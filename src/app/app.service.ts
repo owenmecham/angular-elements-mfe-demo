@@ -1,17 +1,12 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
-import { InventoriedVehicle } from './inventoried-vehicle';
-import { ApiUrlType, SettingsService } from './shared/settings.service';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable()
 export class AppService {
   inventoryId$: BehaviorSubject<number> = new BehaviorSubject(null);
   vehicleId$: BehaviorSubject<number> = new BehaviorSubject(null);
 
-  constructor(private httpClient: HttpClient, private settingsService: SettingsService) {}
+  constructor() {}
 
   setInventoryId(inventoryId: number): void {
     if (!inventoryId) {
@@ -30,10 +25,6 @@ export class AppService {
   }
 
   private getVehicleId(inventoryId: number): Observable<number> {
-    const url = this.settingsService.createUrl('vehicles/v1/' + inventoryId, ApiUrlType.Inventory);
-
-    return this.httpClient
-      .get<InventoriedVehicle>(url, this.settingsService.createRequestOptions())
-      .pipe(map((vehicle) => vehicle.vehicleId));
+    return of(inventoryId + 1000);
   }
 }

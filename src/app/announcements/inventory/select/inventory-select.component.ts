@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+import { ThemeService } from '../../../../theme/theme.service';
 import { AnnouncementOption } from '../../announcement-option';
 import { InventoryAnnouncementService } from '../inventory-announcement.service';
-import { ThemeService } from '../../../../theme/theme.service';
 
 @Component({
   selector: 'adesa-inventory-select',
@@ -36,9 +35,9 @@ export class InventorySelectComponent implements OnInit, OnDestroy {
   }
 
   addAnnouncement(announcement: AnnouncementOption): void {
+    announcement.isBeingAdded = true;
     this.inventoryAnnouncementService.addInventoryAnnouncement(announcement);
     this.searchValue = null;
-    announcement.isBeingAdded = true;
   }
 
   trackFnc(index) {

@@ -1,15 +1,16 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, combineLatest, of, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AppService } from 'src/app/app.service';
+import { TranslationService } from 'src/app/shared/translation.service';
 import { EventDispatchService } from '../../shared/event-dispatch.service';
-import { TranslationService } from '../../shared/translation.service';
 import { AnnouncementOption } from '../announcement-option';
 import { filterAvailableAnnouncements } from '../announcements-functions';
 import { InventoryAnnouncement } from './inventory-announcement';
 
 @Injectable()
 export class InventoryAnnouncementService implements OnDestroy {
-  sampleJson: InventoryAnnouncement[] = [
+  announcements: InventoryAnnouncement[] = [
     {
       description: 'ABS Defective',
       announcementId: 1,
@@ -25,10 +26,20 @@ export class InventoryAnnouncementService implements OnDestroy {
       description: 'ABS Defective',
       isBeingAdded: false,
     },
+    {
+      id: 2,
+      description: 'ABS Functional',
+      isBeingAdded: false,
+    },
+    {
+      id: 3,
+      description: 'Lemon Law',
+      isBeingAdded: false,
+    },
   ];
 
   inventoryAnnouncementsList$: BehaviorSubject<InventoryAnnouncement[]> = new BehaviorSubject(
-    this.sampleJson,
+    this.announcements,
   );
   filteredAnnouncementOptions$: BehaviorSubject<AnnouncementOption[]> = new BehaviorSubject(
     this.availableJson,
@@ -36,15 +47,26 @@ export class InventoryAnnouncementService implements OnDestroy {
   availableAnnouncementOptions$: BehaviorSubject<AnnouncementOption[]> = new BehaviorSubject(
     this.availableJson,
   );
-  // private inventoryId = 1;
+  private inventoryId = 1;
   private unsubscribe$ = new Subject<void>();
 
   constructor(
+    private appService: AppService,
     private eventDispatchService: EventDispatchService,
     private translationService: TranslationService,
   ) {
-    // this.inventoryId = 1;
-    this.refreshAnnouncements();
+    this.appService.inventoryId$.pipe(takeUntil(this.unsubscribe$)).subscribe(
+      (inventoryId) => {
+        if (!inventoryId) {
+          return;
+        }
+        this.inventoryId = inventoryId;
+        this.refreshAnnouncements();
+      },
+      (error) => {
+        throw error;
+      },
+    );
 
     combineLatest([this.inventoryAnnouncementsList$, this.availableAnnouncementOptions$])
       .pipe(takeUntil(this.unsubscribe$))
@@ -59,6 +81,14 @@ export class InventoryAnnouncementService implements OnDestroy {
   }
 
   addInventoryAnnouncement(announcement: AnnouncementOption): void {
+    this.announcements.push({
+      description: announcement.description,
+      announcementId: announcement.id,
+      announcementSequence: 1,
+      displayStatus: announcement.description,
+      inventoryId: this.inventoryId,
+    });
+    announcement.isBeingAdded = false;
     this.eventDispatchService.dispatchEvent('inventoryAnnouncementAdded', announcement);
     this.refreshAnnouncements();
   }
@@ -67,6 +97,9 @@ export class InventoryAnnouncementService implements OnDestroy {
     this.eventDispatchService.dispatchEvent('inventoryAnnouncementDeleted', {
       id: announcementId,
       sequence: announcementSequence,
+    });
+    this.announcements = this.announcements.filter(function(value) {
+      return value.announcementId !== announcementId;
     });
     this.refreshAnnouncements();
   }
@@ -88,27 +121,14 @@ export class InventoryAnnouncementService implements OnDestroy {
   }
 
   refreshAvailableAnnouncements() {
-    of(this.availableJson).subscribe(
-      (announcements) => {
-        const translatedAndSortedAnnouncements = announcements;
-        this.availableAnnouncementOptions$.next(translatedAndSortedAnnouncements);
-      },
-      (error) => {
-        throw error;
-      },
+    const translatedAndSortedAnnouncements = this.translationService.translateAndSortAnnouncementsByDescription(
+      this.availableJson,
     );
+    this.availableAnnouncementOptions$.next(translatedAndSortedAnnouncements);
   }
 
   refreshInventoryAnnouncements() {
-    return of(this.sampleJson).subscribe(
-      (announcements) => {
-        const sortedAnnouncements = announcements;
-        this.eventDispatchService.dispatchEvent('inventoryAnnouncementsUpdated', sortedAnnouncements);
-        this.inventoryAnnouncementsList$.next(sortedAnnouncements);
-      },
-      (error) => {
-        throw error;
-      },
-    );
+    this.eventDispatchService.dispatchEvent('inventoryAnnouncementsUpdated', this.announcements);
+    this.inventoryAnnouncementsList$.next(this.announcements);
   }
 }

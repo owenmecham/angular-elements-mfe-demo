@@ -11,7 +11,7 @@ export class TranslationService {
     return announcements
       .map((announcement) => ({
         ...announcement,
-        description: this.translocoService.translate(announcement.description),
+        description: announcement.description,
       }))
       .sort((a, b) => a.description.localeCompare(b.description, this.translocoService.getActiveLang()));
   }
