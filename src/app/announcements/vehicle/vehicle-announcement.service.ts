@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AppService } from 'src/app/app.service';
 import { EventDispatchService } from '../../shared/event-dispatch.service';
-import { SettingsService } from '../../shared/settings.service';
 import { TranslationService } from '../../shared/translation.service';
 import { AnnouncementOption } from '../announcement-option';
 import { filterAvailableAnnouncements } from '../announcements-functions';
@@ -47,12 +45,10 @@ export class VehicleAnnouncementService implements OnDestroy {
     this.availableJson,
   );
 
-  private vehicleId: number;
+  private vehicleId = 1;
   private unsubscribe$ = new Subject<void>();
 
   constructor(
-    private httpClient: HttpClient,
-    private settingsService: SettingsService,
     private appService: AppService,
     private eventDispatchService: EventDispatchService,
     private translationService: TranslationService,
@@ -104,6 +100,7 @@ export class VehicleAnnouncementService implements OnDestroy {
     this.eventDispatchService.dispatchEvent('vehicleAnnouncementDeleted', {
       id: announcementId,
       sequence: announcementSequence,
+      vehicleId: this.vehicleId,
     });
 
     this.refreshVehicleAnnouncements();
