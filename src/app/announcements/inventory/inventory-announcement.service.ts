@@ -28,12 +28,12 @@ export class InventoryAnnouncementService implements OnDestroy {
     },
     {
       id: 2,
-      description: 'ABS Functional',
+      description: 'Odo Replaced',
       isBeingAdded: false,
     },
     {
       id: 3,
-      description: 'Lemon Law',
+      description: 'Odo Rollback',
       isBeingAdded: false,
     },
   ];

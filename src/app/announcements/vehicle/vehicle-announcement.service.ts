@@ -1,21 +1,51 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { AppService } from 'src/app/app.service';
-
-import { ApiUrlType, SettingsService } from '../../shared/settings.service';
+import { EventDispatchService } from '../../shared/event-dispatch.service';
+import { SettingsService } from '../../shared/settings.service';
+import { TranslationService } from '../../shared/translation.service';
 import { AnnouncementOption } from '../announcement-option';
 import { filterAvailableAnnouncements } from '../announcements-functions';
-import { EventDispatchService } from '../../shared/event-dispatch.service';
 import { VehicleAnnouncement } from './vehicle-announcement';
-import { TranslationService } from '../../shared/translation.service';
 
 @Injectable()
 export class VehicleAnnouncementService implements OnDestroy {
-  vehicleAnnouncementsList$: BehaviorSubject<VehicleAnnouncement[]> = new BehaviorSubject(null);
-  filteredAnnouncementOptions$: BehaviorSubject<AnnouncementOption[]> = new BehaviorSubject(null);
-  availableAnnouncementOptions$: BehaviorSubject<AnnouncementOption[]> = new BehaviorSubject(null);
+  announcements: VehicleAnnouncement[] = [
+    {
+      description: 'Frame/Unibody Damage',
+      announcementId: 1,
+      announcementSequence: 1,
+      displayStatus: 'Frame/Unibody Damage',
+    },
+  ];
+
+  availableJson: AnnouncementOption[] = [
+    {
+      id: 1,
+      description: 'Frame/Unibody Damage',
+      isBeingAdded: false,
+    },
+    {
+      id: 2,
+      description: 'Municipal Vehicle',
+      isBeingAdded: false,
+    },
+    {
+      id: 3,
+      description: 'Salvage Vehicles',
+      isBeingAdded: false,
+    },
+  ];
+
+  vehicleAnnouncementsList$: BehaviorSubject<VehicleAnnouncement[]> = new BehaviorSubject(this.announcements);
+  filteredAnnouncementOptions$: BehaviorSubject<AnnouncementOption[]> = new BehaviorSubject(
+    this.availableJson,
+  );
+  availableAnnouncementOptions$: BehaviorSubject<AnnouncementOption[]> = new BehaviorSubject(
+    this.availableJson,
+  );
 
   private vehicleId: number;
   private unsubscribe$ = new Subject<void>();
@@ -33,7 +63,7 @@ export class VehicleAnnouncementService implements OnDestroy {
           return;
         }
         this.vehicleId = vehicleId;
-        this.refreshVehicleAnnouncements(vehicleId);
+        this.refreshVehicleAnnouncements();
         this.refreshAvailableAnnouncements();
       },
       (error) => {
@@ -54,98 +84,46 @@ export class VehicleAnnouncementService implements OnDestroy {
   }
 
   addVehicleAnnouncement(announcement: AnnouncementOption): void {
-    const url = this.settingsService.createUrl(
-      `vehicles/v1/${this.vehicleId}/announcements`,
-      ApiUrlType.Vehicle,
-    );
+    this.announcements.push({
+      description: announcement.description,
+      announcementId: announcement.id,
+      announcementSequence: 1,
+      displayStatus: announcement.description,
+    });
+    announcement.isBeingAdded = false;
+    this.eventDispatchService.dispatchEvent('vehicleAnnouncementAdded', announcement);
 
-    const announcementId = announcement.id;
-
-    this.httpClient
-      .post<VehicleAnnouncement>(url, { announcementId }, this.settingsService.createRequestOptions())
-      .pipe(take(1))
-      .subscribe(
-        (resp) => {
-          this.eventDispatchService.dispatchEvent('vehicleAnnouncementAdded', resp);
-          this.refreshVehicleAnnouncements(this.vehicleId);
-          this.refreshAvailableAnnouncements();
-        },
-        (error) => {
-          announcement.isBeingAdded = false;
-          throw error;
-        },
-      );
+    this.refreshVehicleAnnouncements();
+    this.refreshAvailableAnnouncements();
   }
 
   deleteVehicleAnnouncement(announcementId: number, announcementSequence: number): void {
-    const url = this.settingsService.createUrl(
-      `vehicles/v1/${this.vehicleId}/announcements/${announcementId}`,
-      ApiUrlType.Vehicle,
-    );
-    this.httpClient
-      .delete(
-        url,
-        this.settingsService.createRequestOptions({ ['announcementSequence']: announcementSequence }),
-      )
-      .pipe(take(1))
-      .subscribe(
-        (_) => {
-          this.eventDispatchService.dispatchEvent('vehicleAnnouncementDeleted', {
-            id: announcementId,
-          });
+    this.announcements = this.announcements.filter(function(value) {
+      return value.announcementId !== announcementId;
+    });
+    this.eventDispatchService.dispatchEvent('vehicleAnnouncementDeleted', {
+      id: announcementId,
+      sequence: announcementSequence,
+    });
 
-          this.refreshVehicleAnnouncements(this.vehicleId);
-          this.refreshAvailableAnnouncements();
-        },
-        (error) => {
-          throw error;
-        },
-      );
+    this.refreshVehicleAnnouncements();
+    this.refreshAvailableAnnouncements();
   }
 
   refreshAvailableAnnouncements() {
-    const url = this.settingsService.createUrl(
-      `vehicles/v1/${this.vehicleId}/availableAnnouncements`,
-      ApiUrlType.Vehicle,
+    const translatedAndSortedAnnouncements = this.translationService.translateAndSortAnnouncementsByDescription(
+      this.availableJson,
     );
-    this.httpClient
-      .get<AnnouncementOption[]>(url, this.settingsService.createRequestOptions())
-      .pipe(take(1))
-      .subscribe(
-        (announcements) => {
-          const translatedAndSortedAnnouncements = this.translationService.translateAndSortAnnouncementsByDescription(
-            announcements,
-          );
-          this.availableAnnouncementOptions$.next(translatedAndSortedAnnouncements);
-        },
-        (error) => {
-          throw error;
-        },
-      );
+    this.availableAnnouncementOptions$.next(translatedAndSortedAnnouncements);
   }
 
-  refreshVehicleAnnouncements(vehicleId: number): void {
-    const url = this.settingsService.createUrl(`vehicles/v1/${vehicleId}/announcements`, ApiUrlType.Vehicle);
-    this.httpClient
-      .get<VehicleAnnouncement[]>(url, this.settingsService.createRequestOptions())
-      .pipe(take(1))
-      .subscribe(
-        (announcements) => {
-          const sortedAnnouncements = this.translationService.translateAndSortAnnouncementsByDescription(
-            announcements,
-          );
+  refreshVehicleAnnouncements(): void {
+    this.eventDispatchService.dispatchEvent('vehicleAnnouncementsUpdated', this.announcements);
 
-          this.eventDispatchService.dispatchEvent('vehicleAnnouncementsUpdated', sortedAnnouncements);
-
-          sortedAnnouncements.forEach((ann) => {
-            ann.displayStatus = 'loaded';
-          });
-          this.vehicleAnnouncementsList$.next(sortedAnnouncements);
-        },
-        (error) => {
-          throw error;
-        },
-      );
+    this.announcements.forEach((ann) => {
+      ann.displayStatus = 'loaded';
+    });
+    this.vehicleAnnouncementsList$.next(this.announcements);
   }
 
   ngOnDestroy(): void {

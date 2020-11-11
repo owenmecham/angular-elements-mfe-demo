@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+import { ThemeService } from '../../../../theme/theme.service';
 import { AnnouncementOption } from '../../announcement-option';
 import { VehicleAnnouncementService } from '../vehicle-announcement.service';
-import { ThemeService } from '../../../../theme/theme.service';
 
 @Component({
   selector: 'adesa-vehicle-select',
@@ -34,9 +33,10 @@ export class VehicleSelectComponent implements OnInit, OnDestroy {
   }
 
   addAnnouncement(announcement: AnnouncementOption): void {
+    announcement.isBeingAdded = true;
     this.vehicleAnnouncementService.addVehicleAnnouncement(announcement);
     this.searchValue = null;
-    announcement.isBeingAdded = true;
+    announcement.isBeingAdded = false;
   }
 
   trackFnc(index) {
