@@ -95,10 +95,10 @@ export class ElementComponent implements AfterViewInit {
   updateLocale(val: string) {
     this.getViews();
     if (this.announcementsViewElement) {
-      this.announcementsViewElement.setAttribute('adesa-locale', val);
+      this.announcementsViewElement.setAttribute('mrclean-locale', val);
     }
     if (this.announcementsElement) {
-      this.announcementsElement.setAttribute('adesa-locale', val);
+      this.announcementsElement.setAttribute('mrclean-locale', val);
     }
   }
 

@@ -22,7 +22,7 @@ import { ExternalContextService } from './shared/external-context.service';
 export class MrcleanMagicViewComponent implements OnInit, OnDestroy {
   private _auctionSiteId: number;
   private _inventoryId: number;
-  private _adesaLocale = 'en-us';
+  private _mrcleanLocale = 'en-us';
   private _externalContextToken;
   private _hasEditPermission = 'true';
 
@@ -36,9 +36,9 @@ export class MrcleanMagicViewComponent implements OnInit, OnDestroy {
     this.onAuctionChanged();
   }
 
-  @Input() set adesaLocale(value: string) {
-    this._adesaLocale = value;
-    this.adesaLocaleChanged();
+  @Input() set mrcleanLocale(value: string) {
+    this._mrcleanLocale = value;
+    this.mrcleanLocaleChanged();
   }
 
   @Input() set externalContextToken(value: string) {
@@ -104,8 +104,8 @@ export class MrcleanMagicViewComponent implements OnInit, OnDestroy {
     this.canadianSite = auctionSites[this._auctionSiteId] === Country.Canada;
   }
 
-  private adesaLocaleChanged() {
-    this.translocoService.setActiveLang(this._adesaLocale);
+  private mrcleanLocaleChanged() {
+    this.translocoService.setActiveLang(this._mrcleanLocale);
   }
 
   private externalContextTokenChanged() {

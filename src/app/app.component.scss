@@ -106,14 +106,14 @@
 
 ::ng-deep .list-buttons-container::-webkit-scrollbar {
   width: 10px;
-  background-color: $adesa-spinner-gray;
+  background-color: $mrclean-spinner-gray;
 }
 
 ::ng-deep .list-buttons-container::-webkit-scrollbar-thumb {
-  background-color: $adesa-warm-gray;
+  background-color: $mrclean-warm-gray;
 }
 
 ::ng-deep .list-buttons-container::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-  background-color: $adesa-spinner-gray;
+  background-color: $mrclean-spinner-gray;
 }

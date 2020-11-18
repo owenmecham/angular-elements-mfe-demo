@@ -1,6 +1,6 @@
 {
-  "adesaAuthorization": {
-    "authority": "https://authorization-api-dev.adesaauctionoperations.com/",
+  "mrcleanAuthorization": {
+    "authority": "https://authorization-api-dev.mrcleanauctionoperations.com/",
     "clientId": "announcements-component-harness",
     "clientScope": "vehicle inventory",
     "silentRedirectUri": "/callback"

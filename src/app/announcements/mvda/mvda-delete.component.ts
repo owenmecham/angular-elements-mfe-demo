@@ -1,11 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-
-import { MvdaAnnouncement } from './mvda-announcement';
 import { ThemeService } from '../../../theme/theme.service';
+import { MvdaAnnouncement } from './mvda-announcement';
 
 @Component({
-  selector: 'adesa-mvda-delete',
+  selector: 'mrclean-mvda-delete',
   templateUrl: './mvda-delete.component.html',
   styleUrls: ['./mvda-delete.component.scss'],
 })

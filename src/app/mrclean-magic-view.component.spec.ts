@@ -93,10 +93,10 @@ describe('MrcleanMagicViewComponent', () => {
     });
   });
 
-  describe('adesaLocale property tests', () => {
+  describe('mrcleanLocale property tests', () => {
     it('should call setActiveLang on translocoService', () => {
       const value = 'en-us';
-      component.adesaLocale = value;
+      component.mrcleanLocale = value;
       expect(translocoServiceMock.setActiveLang).toHaveBeenCalledWith(value);
     });
   });

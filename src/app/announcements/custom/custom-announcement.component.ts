@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-
-import { CustomAnnouncementService } from './custom-announcement.service';
 import { ThemeService } from '../../../theme/theme.service';
+import { CustomAnnouncementService } from './custom-announcement.service';
 
 @Component({
-  selector: 'adesa-custom-announcement',
+  selector: 'mrclean-custom-announcement',
   templateUrl: './custom-announcement.component.html',
   styleUrls: ['./custom-announcement.component.scss'],
 })

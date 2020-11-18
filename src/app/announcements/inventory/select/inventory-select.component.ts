@@ -6,7 +6,7 @@ import { AnnouncementOption } from '../../announcement-option';
 import { InventoryAnnouncementService } from '../inventory-announcement.service';
 
 @Component({
-  selector: 'adesa-inventory-select',
+  selector: 'mrclean-inventory-select',
   templateUrl: './inventory-select.component.html',
   styleUrls: ['./inventory-select.component.scss'],
 })

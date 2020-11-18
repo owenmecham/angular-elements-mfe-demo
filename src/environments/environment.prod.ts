@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   vehicleUrl: '#{vehicleApiUrl}#',
   inventoryUrl: '#{inventoryApiUrl}#',
-  cdnEndpoint: '#{cdnEndpoint}#',
+  cdnEndpoint: 'http://localhost:9081',
   authorization: {
     authority: '#{authApiUrl}#',
     clientId: 'announcements-component-harness',

@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private _auctionSiteId: number;
   private _inventoryId: number;
   private _siteThemeName = 'amp';
-  private _adesaLocale = 'en-us';
+  private _mrcleanLocale = 'en-us';
   private _externalContextToken;
 
   @Input() set inventoryId(value: string) {
@@ -38,9 +38,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.onSiteThemeChanged();
   }
 
-  @Input() set adesaLocale(value: string) {
-    this._adesaLocale = value;
-    this.adesaLocaleChanged();
+  @Input() set mrcleanLocale(value: string) {
+    this._mrcleanLocale = value;
+    this.mrcleanLocaleChanged();
   }
 
   @Input() set externalContextToken(value: string) {
@@ -125,8 +125,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.themeService.setActiveTheme(this._siteThemeName);
   }
 
-  private adesaLocaleChanged() {
-    this.translocoService.setActiveLang(this._adesaLocale);
+  private mrcleanLocaleChanged() {
+    this.translocoService.setActiveLang(this._mrcleanLocale);
   }
 
   private externalContextTokenChanged() {

@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   authorization: {
-    authority: 'https://authorization-api-test.adesaauctionoperations.com',
+    authority: 'https://authorization-api-test.mrcleanauctionoperations.com',
     clientId: 'announcements-component-harness',
     clientScope: 'vehicle inventory',
     silentRedirectUri: '/callback',

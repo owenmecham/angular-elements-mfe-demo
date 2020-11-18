@@ -1,4 +1,4 @@
-$md-adesa: (
+$md-mrclean: (
     50 : #e0f1f3,
     100 : #b3dce0,
     200 : #80c5cc,
@@ -34,9 +34,9 @@ $md-adesa: (
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,300');
 @import '~@angular/material/theming';
 @include mat-core();
-$adesa-primary: mat-palette($md-adesa);
-$adesa-accent: mat-palette($md-adesa, A200, A100, A400);
+$mrclean-primary: mat-palette($md-mrclean);
+$mrclean-accent: mat-palette($md-mrclean, A200, A100, A400);
 
-$adesa-theme: mat-light-theme($adesa-primary, $adesa-accent);
+$mrclean-theme: mat-light-theme($mrclean-primary, $mrclean-accent);
 
-@include angular-material-theme($adesa-theme);
+@include angular-material-theme($mrclean-theme);

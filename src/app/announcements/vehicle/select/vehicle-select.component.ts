@@ -6,7 +6,7 @@ import { AnnouncementOption } from '../../announcement-option';
 import { VehicleAnnouncementService } from '../vehicle-announcement.service';
 
 @Component({
-  selector: 'adesa-vehicle-select',
+  selector: 'mrclean-vehicle-select',
   templateUrl: './vehicle-select.component.html',
   styleUrls: ['./vehicle-select.component.scss'],
 })

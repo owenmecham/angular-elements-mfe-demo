@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  vehicleUrl: 'https://vehicle-api-test.adesaauctionoperations.com',
-  inventoryUrl: 'https://inventory-api-test.adesaauctionoperations.com',
+  vehicleUrl: 'https://vehicle-api-test.mrcleanauctionoperations.com',
+  inventoryUrl: 'https://inventory-api-test.mrcleanauctionoperations.com',
   cdnEndpoint: 'http://localhost:52387',
   authorization: {
-    authority: 'https://authorization-api-test.adesaauctionoperations.com',
+    authority: 'https://authorization-api-test.mrcleanauctionoperations.com',
     clientId: 'announcements-component-harness',
     clientScope: 'vehicle inventory',
     silentRedirectUri: '/callback',

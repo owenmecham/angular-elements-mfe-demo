@@ -2,14 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
-import { MvdaAddComponent } from './mvda-add.component';
+import { ThemeService } from '../../../../theme/theme.service';
 import { MvdaAnnouncementOption } from '../mvda-announcement-option';
 import { MvdaAnnouncementService } from '../mvda-announcement.service';
-import { ThemeService } from '../../../../theme/theme.service';
+import { MvdaAddComponent } from './mvda-add.component';
 
 @Component({
-  selector: 'adesa-mvda-select',
+  selector: 'mrclean-mvda-select',
   templateUrl: './mvda-select.component.html',
   styleUrls: ['./mvda-select.component.scss'],
 })

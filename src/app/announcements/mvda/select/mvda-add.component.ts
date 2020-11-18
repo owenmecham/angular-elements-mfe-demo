@@ -1,11 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-
-import { MvdaAnnouncementOption } from '../mvda-announcement-option';
 import { ThemeService } from '../../../../theme/theme.service';
+import { MvdaAnnouncementOption } from '../mvda-announcement-option';
 
 @Component({
-  selector: 'adesa-mvda-add',
+  selector: 'mrclean-mvda-add',
   templateUrl: './mvda-add.component.html',
   styleUrls: ['./mvda-add.component.scss'],
 })
